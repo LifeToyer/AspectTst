@@ -23,13 +23,18 @@ public class Aspect {
         String methodName = jp.getSignature().getName(); // 获得方法名
         logger.info("位于：" + className + "调用了" + methodName + "()方法！！！！！");
         logger.info("=====================================");
+        logger.info("args:{}",args);
         args[0] ="xx";
         logger.info("方法前");
+        logger.info("args:{}",args);
         return args;
     }
     @AfterReturning(pointcut = "pointCut()",returning = "result")
     public void afterReturn(Object result){
-//        unAdd add = (unAdd) result ;
+        unAdd add = (unAdd) result ;
+        add.setNc("111");
         logger.info("方法后");
+//        return result;
+
     }
 }
